@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cyberpunk Meme Coin Design System - All colors MUST be HSL */
+
+@layer base {
+  :root {
+    /* Cyberpunk Color Palette */
+    --background: 0 0% 0%; /* PURE BLACK */
+    --foreground: 120 100% 90%;
+
+    --card: 210 50% 8%;
+    --card-foreground: 120 100% 85%;
+
+    --popover: 210 50% 8%;
+    --popover-foreground: 120 100% 85%;
+
+    --primary: 120 100% 50%;
+    --primary-foreground: 210 100% 2%;
+
+    --secondary: 210 30% 15%;
+    --secondary-foreground: 120 100% 85%;
+
+    --muted: 210 30% 12%;
+    --muted-foreground: 120 20% 60%;
+
+    --accent: 120 100% 40%;
+    --accent-foreground: 210 100% 2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 120 50% 25%;
+    --input: 210 30% 15%;
+    --ring: 120 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Custom Cyberpunk Tokens */
+    --neon-green: 120 100% 50%;
+    --neon-green-bright: 120 100% 60%;
+    --neon-green-dim: 120 80% 40%;
+    --cyber-dark: 0 0% 0%;     /* PURE BLACK */
+    --cyber-darker: 0 0% 0%;   /* PURE BLACK */
+    --cyber-blue: 200 100% 50%;
+    
+    /* Gradients (kept for optional future use, not applied) */
+    --gradient-neon: linear-gradient(135deg, hsl(120 100% 50% / 0.8), hsl(120 100% 60% / 0.6));
+    --gradient-cyber: linear-gradient(180deg, hsl(0 0% 0%), hsl(0 0% 0%)); /* Overridden to pure black */
+    --gradient-hero: radial-gradient(ellipse at center, hsl(0 0% 0%), transparent 70%);
+    
+    /* Effects */
+    --glow-green: 0 0 20px hsl(120 100% 50% / 0.5);
+    --glow-green-intense: 0 0 40px hsl(120 100% 50% / 0.8);
+    --shadow-cyber: 0 8px 32px hsl(120 100% 50% / 0.2);
+
+    /* Sidebar (optional, if used elsewhere) */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode (same pure black background) */
+    --background: 0 0% 0%;
+    --foreground: 120 100% 90%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-rajdhani overflow-x-hidden;
+    background-image: none !important; /* Force no gradient or image */
+  }
+
+  h1, h2, h3 {
+    @apply font-orbitron;
+  }
+}
+
+@layer components {
+  .cyber-glow {
+    box-shadow: var(--glow-green);
+  }
+  
+  .cyber-glow-intense {
+    box-shadow: var(--glow-green-intense);
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 10px hsl(var(--neon-green));
+  }
+  
+  .cyber-border {
+    border: 1px solid hsl(var(--neon-green) / 0.3);
+  }
+  
+  .cyber-bg {
+    background: hsl(var(--background)); /* PURE BLACK background */
+  }
+}
+
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes glow {
+  from { box-shadow: var(--glow-green); }
+  to { box-shadow: var(--glow-green-intense); }
+}
